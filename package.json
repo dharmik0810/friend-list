@@ -7,40 +7,66 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "lint:styles": "stylelint \"./src/**/*.scss\" --fix",
+    "lint:html": "html-linter --config .htmllintrc ./src/**/*.html",
+    "version:major": "standard-version --release-as major",
+    "version:minor": "standard-version --release-as minor",
+    "version:patch": "standard-version --release-as patch"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "pretty-quick --staged && yarn lint:styles && yarn lint:html",
+      "pre-push": "yarn lint"
+    }
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.12",
+    "@angular/cdk": "9.2.4",
     "@angular/common": "~9.1.12",
     "@angular/compiler": "~9.1.12",
     "@angular/core": "~9.1.12",
     "@angular/forms": "~9.1.12",
+    "@angular/material": "9.2.4",
     "@angular/platform-browser": "~9.1.12",
     "@angular/platform-browser-dynamic": "~9.1.12",
     "@angular/router": "~9.1.12",
     "rxjs": "~6.5.4",
-    "tslib": "^1.10.0",
+    "tslib": "1.10.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.12",
     "@angular/cli": "~9.1.12",
     "@angular/compiler-cli": "~9.1.12",
-    "@types/node": "^12.11.1",
+    "@types/node": "12.12.67",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "codelyzer": "^5.1.2",
+    "codelyzer": "5.2.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~5.0.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
+    "karma-jasmine-html-reporter": "1.5.4",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "lodash": "4.17.20",
+    "prettier": "2.0.4",
+    "pretty-quick": "2.0.1",
+    "html-linter": "1.1.1",
+    "stylelint": "13.3.3",
+    "stylelint-config-rational-order": "0.1.2",
+    "stylelint-config-standard": "20.0.0",
+    "stylelint-order": "4.0.0",
+    "stylelint-scss": "3.17.1",
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-angular": "8.3.4",
+    "standard-version": "9.0.0"
   }
 }
