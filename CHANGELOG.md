@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/dharmik0810/friend-list/compare/v0.3.0...v0.4.0) (2020-10-11)
+
+
+### Features
+
+* **state:** add ngrx for state management ([7a6b836](https://github.com/dharmik0810/friend-list/commit/7a6b83643a80617005c970840bcfebb3e099534d))
+
 ## [0.3.0](https://github.com/dharmik0810/friend-list/compare/v0.2.0...v0.3.0) (2020-10-11)
 
 
