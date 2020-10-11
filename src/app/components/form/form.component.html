@@ -1,0 +1,60 @@
+<mat-card class="card">
+  <mat-card-title class="card__title">Scrapbook</mat-card-title>
+  <form [formGroup]="formGroup" (submit)="addFriend()">
+    <mat-card-content class="card__content">
+      <mat-label class="card__field card__field--label">Name:</mat-label>
+      <mat-form-field appearance="legacy" class="card__field">
+        <input matInput formControlName="name">
+        <mat-error *ngIf="formGroup.controls.name.touched && formGroup.controls.name.invalid">
+          <span *ngIf="hasError('name', 'required')">Please enter a name</span>
+          <span *ngIf="hasError('name', 'pattern')">Please enter a valid name</span>
+          <span *ngIf="hasError('name', 'maxlength')">Please enter a valid name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-label class="card__field card__field--label">Age:</mat-label>
+      <mat-form-field appearance="legacy" class="card__field">
+        <input matInput formControlName="age">
+        <span matSuffix>years</span>
+        <mat-error *ngIf="formGroup.controls.age.touched && formGroup.controls.age.invalid">
+          <span *ngIf="hasError('age', 'required')">Please enter an age</span>
+          <span *ngIf="hasError('age', 'maxlength')">Please enter a valid age</span>
+          <span *ngIf="hasError('age', 'pattern')">Please enter a valid age</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-label class="card__field card__field--label">Weight:</mat-label>
+      <mat-form-field appearance="legacy" class="card__field">
+        <input matInput formControlName="weight">
+        <span matSuffix>lbs</span>
+        <mat-error *ngIf="formGroup.controls.weight.touched && formGroup.controls.weight.invalid">
+          <span *ngIf="hasError('weight', 'required')">Please enter a weight</span>
+          <span *ngIf="hasError('weight', 'maxlength')">Please enter a valid weight</span>
+          <span *ngIf="hasError('weight', 'pattern')">Please enter a valid weight</span>
+        </mat-error>
+      </mat-form-field>
+    <ng-container formArrayName="friends">
+      <mat-label class="card__field card__field--label">Your Friends:</mat-label>
+      <div *ngFor="let item of items.controls; index as i">
+        <mat-form-field appearance="legacy" class="card__field card__field--friend">
+          <input matInput [formControlName]="i.toString()">
+          <mat-error *ngIf="item.touched && item.invalid">
+            <span *ngIf="item.errors.required">Please enter your friend name</span>
+            <span *ngIf="item.errors.pattern">Please enter a valid name</span>
+            <span *ngIf="item.errors.maxlength">Please enter a valid name</span>
+          </mat-error>
+        </mat-form-field>
+        <span (click)="onRemoveItem(i)" class="card__field card__field--remove"></span>
+      </div>
+    </ng-container>
+      <span class="card__action" (click)="onAddNewItem()">
+        <span class="card__action card__action--add"></span>
+        <span class="card__action card__action--text">Add more friends</span>
+      </span>
+  </mat-card-content>
+    <mat-card-actions align="center">
+      <button mat-raised-button color="primary" [disabled]="!formGroup.valid">Add</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+
+<pre> {{formGroup.value | json}}</pre>
+<pre>Form valid: {{formGroup.valid}}</pre>

@@ -1,4 +1,4 @@
-@mixin font($size: false, $colour: false, $weight: false, $lh: false) {
+@mixin font($size: false, $color: false, $weight: false, $lh: false) {
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -15,8 +15,8 @@
     font-size: $size;
   }
 
-  @if $colour {
-    color: $colour;
+  @if $color {
+    color: $color;
   }
 
   @if $weight {
