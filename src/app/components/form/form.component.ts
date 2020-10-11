@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Friend } from '../../models/friend';
+import { cloneDeep } from 'lodash';
+import {Friend} from '../../models/friend';
 
 @Component({
   selector: 'app-form',
@@ -10,6 +11,7 @@ import { Friend } from '../../models/friend';
 export class FormComponent implements OnInit {
   formGroup: FormGroup;
   items: FormArray;
+  @Output() form = new EventEmitter<Friend>();
 
   constructor() {
     this.formGroup = new FormGroup({
@@ -40,8 +42,9 @@ export class FormComponent implements OnInit {
 
   addFriend(): void {
     if (this.formGroup.valid) {
-      const formData = this.formGroup.value as Friend;
-      console.log(formData);
+      const formData = cloneDeep(this.formGroup.value);
+      this.form.emit(formData);
+      this.resetForm();
     }
   }
 
@@ -60,5 +63,13 @@ export class FormComponent implements OnInit {
 
   hasError(controlName: string, errorName: string) {
     return this.formGroup.controls[controlName].hasError(errorName);
+  }
+
+  resetForm(): void {
+    this.formGroup.reset();
+    Object.keys(this.formGroup.controls).forEach((key) => {
+      this.formGroup.get(key).setErrors(null);
+    });
+    this.items.controls.forEach((control) => control.setErrors(null));
   }
 }

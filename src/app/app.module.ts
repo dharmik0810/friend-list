@@ -4,19 +4,31 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormModule} from './components/form/form.module';
+import { FormModule } from './components/form/form.module';
+import { FriendListStoreModule } from './store/friend-list-store.module';
+import { StoreModule } from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormModule
+    FormModule,
+    StoreModule.forRoot(
+      {},
+      {
+        runtimeChecks: {
+          strictStateImmutability: false,
+          strictActionImmutability: false,
+        },
+      }
+    ),
+    EffectsModule.forRoot([]),
+    FriendListStoreModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

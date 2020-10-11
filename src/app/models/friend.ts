@@ -1,6 +1,6 @@
 export interface Friend {
   name: string;
-  age: number;
+  age: string;
   weight: string;
   friends: string[];
 }
