@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/dharmik0810/friend-list/compare/v0.4.0...v0.5.0) (2020-10-12)
+
+
+### Features
+
+* **friend-list:** add friend list mat table component ([4c2a55f](https://github.com/dharmik0810/friend-list/commit/4c2a55f7ca3fd3b0f0616654f6437ce86c1ba0a7))
+
+
+### Bug Fixes
+
+* **reducer:** add friend reducer ([ed7dab9](https://github.com/dharmik0810/friend-list/commit/ed7dab963b576409798537322b4c88c948f9f3f9))
+* **state:** session storage reducer and add test cases ([86fe75f](https://github.com/dharmik0810/friend-list/commit/86fe75f81471c757f21e442baf4a58a394d37bae))
+
 ## [0.4.0](https://github.com/dharmik0810/friend-list/compare/v0.3.0...v0.4.0) (2020-10-11)
 
 
