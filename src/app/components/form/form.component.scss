@@ -29,6 +29,7 @@
     }
 
     &--remove {
+      cursor: pointer;
       display: inline-block;
       width: 24px;
       height: 24px;
@@ -50,6 +51,15 @@
 
     &--text {
       @include font(17px, $purple, 400, 23px);
+    }
+  }
+
+  &__button {
+    @include font(18px, $green, 400, 23px);
+    padding: 8px 30px;
+
+    &-container {
+      padding: 35px 0 20px;
     }
   }
 }

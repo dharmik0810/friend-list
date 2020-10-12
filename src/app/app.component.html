@@ -1,6 +1,4 @@
 <div class="app">
   <app-form (form)="formData($event)"></app-form>
-  <pre>
-    {{friends | json}}
-  </pre>
+  <app-friends [friends$]="friends"></app-friends>
 </div>

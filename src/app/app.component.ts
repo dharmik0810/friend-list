@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FriendListSelectors } from './store/selectors/friend-list-selectors';
 import { Friend } from './models/friend';
 import { FriendListActions } from './store/actions/friend-list-actions';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { FriendListActions } from './store/actions/friend-list-actions';
 })
 export class AppComponent implements OnInit {
   title = 'scrapbook';
-  friends: Friend[];
+  friends: Observable<Friend[]>;
 
   constructor(
     private friendListActions: FriendListActions,
@@ -20,12 +22,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.friendListSelector
+    this.friends = this.friendListSelector
       .getState()
-      .subscribe((state) => (this.friends = state.friendList));
+      .pipe(
+        map((state) => state.friendList)
+      );
   }
 
-  formData(friend: Friend) {
+  formData(friend: Friend): void {
     this.friendListActions.addFriend(friend);
   }
 }

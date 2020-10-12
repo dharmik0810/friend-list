@@ -1,7 +1,13 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { cloneDeep } from 'lodash';
-import {Friend} from '../../models/friend';
+import { Friend } from '../../models/friend';
 
 @Component({
   selector: 'app-form',
@@ -41,10 +47,10 @@ export class FormComponent implements OnInit {
   }
 
   addFriend(): void {
-    if (this.formGroup.valid) {
+    if (this.formGroup.valid && this.formGroup.touched) {
       const formData = cloneDeep(this.formGroup.value);
       this.form.emit(formData);
-      this.resetForm();
+      this.resetForm(this.formGroup, this.items);
     }
   }
 
@@ -65,11 +71,16 @@ export class FormComponent implements OnInit {
     return this.formGroup.controls[controlName].hasError(errorName);
   }
 
-  resetForm(): void {
-    this.formGroup.reset();
-    Object.keys(this.formGroup.controls).forEach((key) => {
-      this.formGroup.get(key).setErrors(null);
+  resetForm(formGroup: FormGroup, formArray: FormArray) {
+    let control: AbstractControl = null;
+    formGroup.reset();
+    formGroup.markAsUntouched();
+    Object.keys(formGroup.controls).forEach((name) => {
+      control = formGroup.controls[name];
+      control.setErrors(null);
     });
-    this.items.controls.forEach((control) => control.setErrors(null));
+    while (formArray.length) {
+      formArray.removeAt(0);
+    }
   }
 }
