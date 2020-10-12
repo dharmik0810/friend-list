@@ -6,7 +6,7 @@ As a part of this exercise, I have created a form with the ability for the user 
 
 A user can add and remove any number of friends they want as part of the form. 
 
-Upon submission, data are being displayed in a material table for the users to view what they entered, and it is also stored into the state. On refresh the users can view their previously added friends. 
+Upon submission, data is being displayed in a material table for the users to view what they entered, and it is also stored into the state. On refresh the users can view their previously added friends. 
 
 Used NgRX for state management. Added pattern which can be scalable to add new actions and it's implementation.
 
