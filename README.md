@@ -1,6 +1,28 @@
-# FriendList
+# Scrapbook
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.
+
+As a part of this exercise, I have created a form with the ability for the user to add their name, age, weight and list of friends they have. 
+
+A user can add and remove any number of friends they want as part of the form. 
+
+Upon submission, data are being displayed in a material table for the users to view what they entered, and it is also stored into the state. On refresh the users can view their previously added friends. 
+
+Used NgRX for state management. Added pattern which can be scalable to add new actions and it's implementation.
+
+Components are stateless.  
+
+Used reactive forms for form validation.
+
+Used BEM pattern for styling and it is fully responsive. 
+
+## Scrapbook demo
+
+![](scrapbook.gif)
+
+#### Future Enhancements
+
+Add D3 charts for data visualization.
 
 ## Development server
 

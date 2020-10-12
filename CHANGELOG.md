@@ -18,4 +18,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.2.0](https://github.com/dharmik0810/friend-list/compare/v0.1.0...v0.2.0) (2020-10-10)
 
+### Features
+
+* **style:** add common fonts, colors and breakpoints mixins ([44230c](https://github.com/dharmik0810/friend-list/commit/2f48300ba346c171d8100607a01c86bf8e44230c))
+
+
 ## 0.1.0 (2020-10-10)
