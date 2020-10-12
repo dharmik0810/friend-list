@@ -17,9 +17,7 @@ export class AppComponent implements OnInit {
   constructor(
     private friendListActions: FriendListActions,
     private friendListSelector: FriendListSelectors
-  ) {
-    this.friendListActions.initFriendList();
-  }
+  ) {}
 
   ngOnInit(): void {
     this.friends = this.friendListSelector
