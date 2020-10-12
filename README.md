@@ -20,6 +20,10 @@ Used BEM pattern for styling and it is fully responsive.
 
 ![](scrapbook.gif)
 
+## Application Changelog
+
+[reference](CHANGELOG.md)
+
 #### Future Enhancements
 
 Add D3 charts for data visualization.
